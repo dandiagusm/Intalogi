@@ -2,73 +2,89 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OrderSystem.Data;
 using OrderSystem.Models;
+using OrderSystem.Dtos;
 
-namespace OrderSystem.Controllers
+namespace OrderSystem.Controllers;
+
+[ApiController]
+[Route("api/[controller]")]
+public class ProductTypesController : ControllerBase
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class ProductTypesController : ControllerBase
+    private readonly AppDbContext _context;
+    public ProductTypesController(AppDbContext context) => _context = context;
+
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<ProductTypeResponseDto>>> GetAll()
     {
-        private readonly AppDbContext _context;
+        var result = await _context.ProductTypes
+            .Select(pt => new ProductTypeResponseDto
+            {
+                Id = pt.Id,
+                Name = pt.Name,
+                Description = pt.Description
+            })
+            .ToListAsync();
 
-        public ProductTypesController(AppDbContext context)
+        return Ok(result);
+    }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<ProductTypeResponseDto>> GetById(int id)
+    {
+        var pt = await _context.ProductTypes.FindAsync(id);
+        if (pt == null) return NotFound();
+
+        return Ok(new ProductTypeResponseDto
         {
-            _context = context;
-        }
+            Id = pt.Id,
+            Name = pt.Name,
+            Description = pt.Description
+        });
+    }
 
-        // GET: api/producttypes
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<ProductType>>> GetAll()
+    [HttpPost]
+    public async Task<ActionResult<ProductTypeResponseDto>> Create(ProductTypeCreateDto dto)
+    {
+        var pt = new ProductType
         {
-            return await _context.ProductTypes.ToListAsync();
-        }
+            Name = dto.Name,
+            Description = dto.Description
+        };
 
-        // GET: api/producttypes/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<ProductType>> GetById(int id)
+        _context.ProductTypes.Add(pt);
+        await _context.SaveChangesAsync();
+
+        var response = new ProductTypeResponseDto
         {
-            var type = await _context.ProductTypes.FindAsync(id);
-            if (type == null)
-                return NotFound();
+            Id = pt.Id,
+            Name = pt.Name,
+            Description = pt.Description
+        };
 
-            return type;
-        }
+        return CreatedAtAction(nameof(GetById), new { id = response.Id }, response);
+    }
 
-        // POST: api/producttypes
-        [HttpPost]
-        public async Task<ActionResult<ProductType>> Create(ProductType type)
-        {
-            _context.ProductTypes.Add(type);
-            await _context.SaveChangesAsync();
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Update(int id, ProductTypeCreateDto dto)
+    {
+        var pt = await _context.ProductTypes.FindAsync(id);
+        if (pt == null) return NotFound();
 
-            return CreatedAtAction(nameof(GetById), new { id = type.Id }, type);
-        }
+        pt.Name = dto.Name;
+        pt.Description = dto.Description;
 
-        // PUT: api/producttypes/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, ProductType type)
-        {
-            if (id != type.Id)
-                return BadRequest();
+        await _context.SaveChangesAsync();
+        return NoContent();
+    }
 
-            _context.Entry(type).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var pt = await _context.ProductTypes.FindAsync(id);
+        if (pt == null) return NotFound();
 
-            return NoContent();
-        }
-
-        // DELETE: api/producttypes/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
-        {
-            var type = await _context.ProductTypes.FindAsync(id);
-            if (type == null)
-                return NotFound();
-
-            _context.ProductTypes.Remove(type);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
+        _context.ProductTypes.Remove(pt);
+        await _context.SaveChangesAsync();
+        return NoContent();
     }
 }
