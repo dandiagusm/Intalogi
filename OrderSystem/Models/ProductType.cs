@@ -1,11 +1,8 @@
-namespace OrderSystem.Models
-{
-    public class ProductType
-    {
-        public int TypeId { get; set; }
-        public string TypeName { get; set; } = string.Empty;
-        public string? Description { get; set; }
+namespace OrderSystem.Models;
 
-        public ICollection<Product>? Products { get; set; }
-    }
+public class ProductType
+{
+    public int Id { get; set; }
+    public string Name { get; set; } = "";
+    public string Description { get; set; } = "";
 }

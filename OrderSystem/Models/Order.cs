@@ -1,16 +1,12 @@
-using System;
-using System.Collections.Generic;
+namespace OrderSystem.Models;
 
-namespace OrderSystem.Models
+public class Order
 {
-    public class Order
-    {
-        public int OrderId { get; set; }
-        public DateTime OrderDate { get; set; }
+    public int Id { get; set; }
+    public DateTime OrderDate { get; set; } = DateTime.Now;
 
-        public Guid CustomerId { get; set; }
-        public Customer? Customer { get; set; }
+    public int CustomerId { get; set; }
+    public Customer? Customer { get; set; }
 
-        public ICollection<OrderDetail>? OrderDetails { get; set; }
-    }
+    public ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
 }

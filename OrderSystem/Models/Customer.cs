@@ -1,17 +1,11 @@
-using System;
-using System.Collections.Generic;
+namespace OrderSystem.Models;
 
-namespace OrderSystem.Models
+public class Customer
 {
-    public class Customer
-    {
-        public Guid CustomerId { get; set; }
-        public string CustomerName { get; set; } = string.Empty;
-        public string Address { get; set; } = string.Empty;
-        public string City { get; set; } = string.Empty;
-        public string Province { get; set; } = string.Empty;
-        public string PhoneNumber { get; set; } = string.Empty;
-
-        public ICollection<Order>? Orders { get; set; }
-    }
+    public int Id { get; set; }
+    public string Name { get; set; } = "";
+    public string Address { get; set; } = "";
+    public string City { get; set; } = "";
+    public string Province { get; set; } = "";
+    public string Phone { get; set; } = "";
 }

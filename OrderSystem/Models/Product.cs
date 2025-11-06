@@ -1,14 +1,11 @@
-namespace OrderSystem.Models
+namespace OrderSystem.Models;
+
+public class Product
 {
-    public class Product
-    {
-        public int ProductId { get; set; }
-        public string ProductName { get; set; } = string.Empty;
-        public float ItemPrice { get; set; }
+    public int Id { get; set; }
+    public string Name { get; set; } = "";
+    public decimal Price { get; set; }
 
-        public int TypeId { get; set; }
-        public ProductType? ProductType { get; set; }
-
-        public ICollection<OrderDetail>? OrderDetails { get; set; }
-    }
+    public int ProductTypeId { get; set; }
+    public ProductType? ProductType { get; set; }
 }
