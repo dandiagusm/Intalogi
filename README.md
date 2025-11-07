@@ -40,8 +40,19 @@ OrderSystem/
 └── Program.cs
 ```
 
-## DB Design
-![ERD Intalogi.drawio.png](docs/ERD Intalogi.drawio.png)
+## Entity Relationship Diagram (ERD)
+
+Below is the logical design for the Order System database:
+
+![Entity Relationship Diagram](docs/ERD%20Intalogi.drawio.png)
+
+### Tables Overview
+- **Customers** → Stores customer info (name, address, etc.)
+- **ProductTypes** → Categories or classifications of products
+- **Products** → Items available for order
+- **Orders** → Represents a customer's purchase
+- **OrderDetails** → The many-to-many join between Orders and Products
+
 
 ---
 
