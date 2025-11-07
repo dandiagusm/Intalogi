@@ -41,7 +41,7 @@ OrderSystem/
 ```
 
 ## DB Design
-![ERD Diagram](docs/ERD Intalogi.drawio.png)
+![ERD Intalogi.drawio.png](docs/ERD Intalogi.drawio.png)
 
 ---
 
