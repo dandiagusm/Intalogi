@@ -175,14 +175,14 @@ Then open your browser at:
 
 ## 📊 Reports (Analytics Endpoints)
 
-| Endpoint | Description | Example |
-|-----------|--------------|----------|
-| `/api/reports/sales-before?date=2025-01-01` | Orders before date | `?date=2025-01-01` |
-| `/api/reports/sales-by-product-type` | Grouped by product type | — |
-| `/api/reports/sales-by-product` | Grouped by product | — |
-| `/api/reports/products-above-average` | Products above average price | — |
-| `/api/reports/sales-above-5m` | Orders with sales > 5M | — |
-| `/api/reports/products-by-type` | List products by type | — |
+| Endpoint | Description | 
+|-----------|--------------|
+| `/api/reports/sales-before?date=2025-01-01` | Orders before date |
+| `/api/reports/sales-by-product-type` | Grouped by product type |
+| `/api/reports/sales-by-product` | Grouped by product |
+| `/api/reports/products-above-average` | Products above average price |
+| `/api/reports/sales-above-5m` | Orders with sales > 5M |
+| `/api/reports/products-by-type` | List products by type |
 
 
 ## Common Commands
