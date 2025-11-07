@@ -40,6 +40,9 @@ OrderSystem/
 └── Program.cs
 ```
 
+## DB Design
+![ERD Diagram](docs/ERD Intalogi.drawio.png)
+
 ---
 
 ## 🚀 Getting Started
