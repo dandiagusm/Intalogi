@@ -15,7 +15,7 @@ A simple Order Management REST API built with **.NET 8** and **Entity Framework 
 
 ---
 
-## ⚙️ Project Structure
+## Project Structure
 
 ```
 OrderSystem/
@@ -44,18 +44,18 @@ OrderSystem/
 
 ## 🚀 Getting Started
 
-### 1️⃣ Clone the Project
+### Clone the Project
 ```bash
 git clone https://github.com/yourusername/OrderSystem.git
 cd OrderSystem
 ```
 
-### 2️⃣ Restore Dependencies
+### Restore Dependencies
 ```bash
 dotnet restore
 ```
 
-### 3️⃣ Configure Database
+### Configure Database
 Open **`appsettings.json`** and update your SQL Server connection string:
 ```json
 {
@@ -65,11 +65,11 @@ Open **`appsettings.json`** and update your SQL Server connection string:
 }
 ```
 
-### 4️⃣ Run EF Core Migrations
+### Run EF Core Migrations
 ```bash
 dotnet ef database update
 ```
-✅ This creates all necessary tables:
+This creates all necessary tables:
 - Customers
 - ProductTypes
 - Products
@@ -78,7 +78,7 @@ dotnet ef database update
 
 ---
 
-## ▶️ Running the API
+## Running the API
 
 Start the project:
 ```bash
@@ -93,13 +93,13 @@ Application started. Press Ctrl+C to shut down.
 
 Then open your browser at:
 
-👉 [http://localhost:5042/swagger](http://localhost:5042/swagger)
+[http://localhost:5042/swagger](http://localhost:5042/swagger)
 
 ---
 
-## 📖 API Documentation (Swagger Examples)
+## API Documentation (Swagger Examples)
 
-### 🧍 Customers
+### Customers
 **POST `/api/customers`**
 ```json
 {
@@ -127,7 +127,7 @@ Then open your browser at:
 
 ---
 
-### 🧾 Orders
+### Orders
 **POST `/api/orders`**
 ```json
 {
@@ -161,17 +161,17 @@ Then open your browser at:
 
 ## 📊 Reports (Analytics Endpoints)
 
-| # | Endpoint | Description | Example |
-|--|-----------|--------------|----------|
-| 2️⃣ | `/api/reports/sales-before?date=2025-01-01` | Orders before date | `?date=2025-01-01` |
-| 3️⃣ | `/api/reports/sales-by-product-type` | Grouped by product type | — |
-| 4️⃣ | `/api/reports/sales-by-product` | Grouped by product | — |
-| 5️⃣ | `/api/reports/products-above-average` | Products above average price | — |
-| 6️⃣ | `/api/reports/sales-above-5m` | Orders with sales > 5M | — |
-| 7️⃣ | `/api/reports/products-by-type` | List products by type | — |
+| Endpoint | Description | Example |
+|-----------|--------------|----------|
+| `/api/reports/sales-before?date=2025-01-01` | Orders before date | `?date=2025-01-01` |
+| `/api/reports/sales-by-product-type` | Grouped by product type | — |
+| `/api/reports/sales-by-product` | Grouped by product | — |
+| `/api/reports/products-above-average` | Products above average price | — |
+| `/api/reports/sales-above-5m` | Orders with sales > 5M | — |
+| `/api/reports/products-by-type` | List products by type | — |
 
 
-## 🧩 Common Commands
+## Common Commands
 
 | Command | Description |
 |----------|-------------|
@@ -183,7 +183,7 @@ Then open your browser at:
 
 ---
 
-## 🧑‍💻 Author
+## Author
 **Dandi Agus Maulana**  
 
 
